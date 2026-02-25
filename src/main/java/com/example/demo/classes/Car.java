@@ -21,7 +21,6 @@ public class Car {
     }
 
     public Car(String brand, String model, int pricePerDay, String status, String image_url) {
-
         this.brand = brand;
         this.model = model;
         this.pricePerDay = pricePerDay;

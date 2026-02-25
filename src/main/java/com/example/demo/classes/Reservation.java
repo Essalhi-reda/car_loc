@@ -13,6 +13,8 @@ public class Reservation {
     // Date de début et de fin de location
     private LocalDate dateDebut;
     private LocalDate dateFin;
+    @OneToOne(mappedBy = "reservation")
+    private Payment payment;
 
     // Prix total calculé
     private double prixTotal;
