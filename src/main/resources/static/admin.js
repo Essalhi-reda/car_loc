@@ -1,3 +1,8 @@
+window.onload = function() {
+    affichervoitures();
+}
+
+
 document.getElementById("carForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -31,3 +36,33 @@ document.getElementById("carForm").addEventListener("submit", function(event) {
             console.error(error);
         });
 });
+
+
+function affichervoitures() {
+
+    fetch("/cars")
+        .then(response => response.json())
+        .then(data => {
+
+            let table = document.getElementById("carsTable");
+
+            data.forEach(car => {
+
+                let row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${car.id}</td>
+                    
+                    <td>${car.brand}</td>
+                    <td>${car.model}</td>
+                    <td>${car.pricePerDay}</td>
+                    <td>${car.status}</td>
+                    <td>${car.imageUrl}</td>
+                `;
+
+                table.appendChild(row);
+            });
+        });
+}
+
+
